@@ -4,9 +4,13 @@ namespace TrianglePatterns
 {
 	class Program
 	{
-		static void Main(string[] args)
+
+        static int value= 10;
+        static int i, j, k;
+        static void Main(string[] args)
 		{
-			DisplayPatternA();
+            
+            DisplayPatternA();
 			DisplayPatternB();
 			DisplayPatternC();
 			DisplayPatternD();
@@ -16,22 +20,67 @@ namespace TrianglePatterns
 
 		static void DisplayPatternA()
 		{
-			// your implementation here
-		}
+            Console.WriteLine("Pattern A");
+            for (i = 1; i <= value; i++)
+            {
+                for (k = 1; k <= i; k++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("");
+            }
 
-		static void DisplayPatternB()
-		{
-			// your implementation here
-		}
+        }
 
-		static void DisplayPatternC()
+        static void DisplayPatternB()
 		{
-			// your implementation here
-		}
+            Console.WriteLine("Pattern B");
+            for (i = value; i >= 0; i--)
+            {
+                for (k = 1; k <= i; k++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("");
+            }
 
-		static void DisplayPatternD()
+        }
+
+        static void DisplayPatternC()
 		{
-			// your implementation here
-		}
-	}
+            Console.WriteLine("Pattern C");
+            for (i = 1; i <= value; i++)
+            {
+                for (j = 1; j <= i - 1; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (k = value - i; k >= 0; k--)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("");
+            }
+
+        }
+
+        static void DisplayPatternD()
+		{
+            Console.WriteLine("Pattern D");
+            for (i = value; i >= 1; i--)
+            {
+                for (j = 1; j <= i - 1; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (k = value; k >= i; k--)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine("");
+            }
+
+
+        }
+    }
 }

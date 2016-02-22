@@ -10,20 +10,51 @@ namespace GasPump
 			RegularGas,
 			MidgradeGas,
 			PremiumGas,
-			DieselFuel				
+			DieselFuel			
 		}
 
 		static void Main(string[] args)
 		{
-			// your implementation here
+            double totalcost=0.0;
+            String userInput;
+
+           do  {
+                Console.Write("Enter purchased gas type, Q/q to quit : ");
+                 userInput = Console.ReadLine();
+                if (!UserEnteredSentinelValue(userInput) && UserEnteredValidGasType(userInput))
+                {
+                    Console.Write("Enter purchased gas amount, Q/q to quit :");
+                    String userInputTwo= Console.ReadLine();
+                    if (!UserEnteredSentinelValue(userInputTwo) && UserEnteredValidAmount(userInputTwo)) {
+                        int gasAmount;
+                        Int32.TryParse(userInputTwo, out gasAmount);
+                        Char gastype;
+                        char.TryParse(userInput, out gastype);
+                        CalculateTotalCost(GasTypeMapper(gastype), gasAmount, ref totalcost);
+                        Console.WriteLine("Your total cost of purchase is:{0}", totalcost);
+                    }
+                }
+        }  while (!UserEnteredSentinelValue(userInput)) ;
+            Console.WriteLine("Application Terminated");
+            Console.WriteLine("Press any key to continue.....");
+            Console.ReadKey();
+             
+            
 		}
 
-		// use this method to check and see if sentinel value is entered
-		public static bool UserEnteredSentinelValue(string userInput)
-		{
-			var result = false;
+        // use this method to check and see if sentinel value is entered
+        public static bool UserEnteredSentinelValue(string userInput)
+        {
+            var result = false;
+            Char userInputChar;
 
-			// your implementation here
+
+            if (char.TryParse(userInput,out userInputChar)) { 
+
+            if (userInputChar.Equals('q') || userInputChar.Equals('Q')) {
+                result = true;
+            }
+        }
 
 			return result;
 		}
@@ -33,8 +64,20 @@ namespace GasPump
 		public static bool UserEnteredValidGasType(string userInput)
 		{
 			var result = false;
+            Char userInputChar;
+            try
+            {
+                 userInputChar = char.Parse(userInput);
+            }
+            catch (Exception e) {
+                return false;
+            }
 
-			// your implementation here
+            if (userInputChar.Equals('r') || userInputChar.Equals('R') || userInputChar.Equals('m') ||
+                userInputChar.Equals('M')|| userInputChar.Equals('p') || userInputChar.Equals('P')||
+                userInputChar.Equals('d')|| userInputChar.Equals('D')) {
+                result = true;
+            }
 			
 			return result;
 		}
@@ -44,9 +87,9 @@ namespace GasPump
 		public static bool UserEnteredValidAmount(string userInput)
 		{
 			var result = false;
-
-			// your implementation here
-
+            Double  number;
+            result = double.TryParse(userInput, out number);
+          
 			return result;
 		}
 
@@ -57,7 +100,28 @@ namespace GasPump
 		{
 			GasType gasType = GasType.None;
 
-			// your implementation here
+            switch (c) {
+                case 'r':
+                case 'R':
+                    gasType = GasType.RegularGas;
+                    break;
+
+                case 'p':
+                case 'P':
+                    gasType = GasType.PremiumGas;
+                    break;
+
+                case 'm':
+                case 'M':
+                    gasType = GasType.MidgradeGas;
+                    break;
+
+                case 'd':
+                case 'D':
+                    gasType = GasType.DieselFuel;
+                    break;
+
+            }
 
 			return gasType;
 		}
@@ -66,14 +130,37 @@ namespace GasPump
 		{
 			var result = 0.0;
 
-			// your implementation here
+            switch(gasType){
+
+                case GasType.RegularGas:
+                    result = 1.94;
+                    break;
+
+                case GasType.MidgradeGas:
+                    result = 2.0;
+                    break;
+
+                case GasType.PremiumGas:
+                    result = 2.24;
+                    break;
+
+                case GasType.DieselFuel:
+                    result = 2.17;
+                    break;
+
+
+            }
+
 
 			return result;
 	}
 
 		public static void CalculateTotalCost(GasType gasType, int gasAmount, ref double totalCost)
 		{
-			// your implementation here
+            double priceOfGas = GasPriceMapper(gasType);
+
+            Console.WriteLine("You brought {0} galoons of {1} at {2} ",gasAmount,gasType.ToString(),priceOfGas);
+            totalCost = priceOfGas * gasAmount;
 		}
 	}
 }

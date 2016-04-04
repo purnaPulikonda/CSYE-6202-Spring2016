@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRegistrationWinForm", "StudentRegistrationWinForm\StudentRegistrationWinForm.csproj", "{A4908039-B6EE-4766-9B59-1F5EB38DCD82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRegistrationWinForm", "..\..\StudentRegistrationWinForm\StudentRegistrationWinForm\StudentRegistrationWinForm.csproj", "{A4908039-B6EE-4766-9B59-1F5EB38DCD82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRegistration.Domain", "StudentRegistration.Domain\StudentRegistration.Domain.csproj", "{E1A1105F-EC12-4A17-B2BD-E8961CCEAACE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRegistration.Domain", "..\..\StudentRegistrationWinForm\StudentRegistration.Domain\StudentRegistration.Domain.csproj", "{E1A1105F-EC12-4A17-B2BD-E8961CCEAACE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

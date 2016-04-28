@@ -45,6 +45,8 @@
             this.dataGridViewCarrier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCarrier.Location = new System.Drawing.Point(103, 124);
             this.dataGridViewCarrier.Name = "dataGridViewCarrier";
+            this.dataGridViewCarrier.ReadOnly = true;
+            this.dataGridViewCarrier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCarrier.Size = new System.Drawing.Size(471, 164);
             this.dataGridViewCarrier.TabIndex = 0;
             // 

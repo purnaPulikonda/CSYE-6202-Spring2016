@@ -99,14 +99,14 @@ dateString, timeString,flightSource,flightDestination,economyPrice,ecoPlusPrice,
 
             cmd.CommandText = @"
                 UPDATE flight
-                SET dateString = @dateString, timeString=@timeString,flightSource=@flightSource
+                SET dateString = @dateString, timeString=@timeString,flightSource=@flightSource,
                  flightDestination=@flightDestination,economyPrice=@economyPrice,
                   ecoPlusPrice=@ecoPlusPrice,businessPrice=@businessPrice,
                  carrierId=@carrierId,flightcrewId=@flightcrewId
                 WHERE  flightId =@flightId AND flightName=@flightName";
 
-            cmd.Parameters.AddWithValue("@flightId", f.flightId);
-            cmd.Parameters.AddWithValue("@flightName", f.flightName);
+            cmd.Parameters.AddWithValue("@flightId", f.flightName);
+            cmd.Parameters.AddWithValue("@flightName", f.flightId);
             cmd.Parameters.AddWithValue("@dateString", f.thisDate);
             cmd.Parameters.AddWithValue("@timeString", f.timeSpan);
             cmd.Parameters.AddWithValue("@flightSource", f.flightSource);

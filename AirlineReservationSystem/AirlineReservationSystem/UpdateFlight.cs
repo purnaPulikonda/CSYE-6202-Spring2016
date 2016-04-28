@@ -208,5 +208,25 @@ namespace AirlineReservationSystem
             txtEcoPlusPrice.Enabled = true;
             txtBusinessPrice.Enabled = true;
         }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AdminMainMenu amm = new AdminMainMenu();
+           
+            amm.Show();
+        }
+
+        private void toolStripLabel3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ShowAllFlights saf = new ShowAllFlights();
+            saf.Show();
+        }
+
+        private void toolStripLabel2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

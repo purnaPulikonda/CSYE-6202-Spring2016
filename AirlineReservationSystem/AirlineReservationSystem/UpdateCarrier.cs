@@ -49,7 +49,7 @@ namespace AirlineReservationSystem
                 cdal.closeConnection();
             }
             catch (SqlException ex) {
-              //  consol
+
             }
             if (result == 1)
             {

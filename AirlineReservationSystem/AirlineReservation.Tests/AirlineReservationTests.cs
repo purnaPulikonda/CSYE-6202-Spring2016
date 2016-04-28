@@ -1,6 +1,8 @@
 ﻿using AirlineRegistration.Dao;
 using AirlineReservationSystem;
 using NUnit.Framework;
+using System;
+
 
 namespace AirlineReservation.Tests
 {
@@ -12,7 +14,8 @@ namespace AirlineReservation.Tests
         User user;
         Flight flight;
         FlightInformation flightinformation;
-       [TestFixtureSetUp]
+
+        [TestFixtureSetUp]
         public void Setup()
         {
             // create the student here..
@@ -20,7 +23,7 @@ namespace AirlineReservation.Tests
             user.id = 10;
             user.name = "katy";
             user.address = "324 Park Street,Boston";
-            user.phoneNumber= "(123)-567-9873";
+            user.phoneNumber = "(123)-567-9873";
             user.emailId = "email@gmail.com";
 
             flight = new Flight();
@@ -33,29 +36,31 @@ namespace AirlineReservation.Tests
             flight.businessPrice = 3000f;
             flight.carrierId = "123";
             flight.flightCrewId = 1;
+        }
 
 
+
+        [Test]
+        public void CalculateTotalWhenUserBuyThreeEconomyTickets_ResultsAreCorrect()
+        {
+
+
+
+            // prepare
+            float expected = 3000;
+            int numberOfEconomyTickets = 3;
+            int numberOfEconomyPlusTickets = 0;
+            int numberOfBusinessTickets = 0;
             FlightInformation flightinformation = new FlightInformation();
             flightinformation.user = user;
             flightinformation.flight = flight;
 
-        }
-
-        [Test]
-        public void CalculateTotalWhenUserBuyThreeEconomyTickets_ResultsAreCorrect() {
-
-            
-
-            // prepare
-           float expected = 3000;
-            int numberOfEconomyTickets = 3;
-            int numberOfEconomyPlusTickets = 0;
-            int numberOfBusinessTickets = 0;
 
 
             // action
             //  FlightInformation
-            float total = flightinformation.calculateTotal(numberOfEconomyTickets,numberOfEconomyPlusTickets,numberOfBusinessTickets);
+            Console.WriteLine(flightinformation);
+            float total = flightinformation.calculateTotal(numberOfEconomyTickets, numberOfEconomyPlusTickets, numberOfBusinessTickets);
 
             // assert
             Assert.That(expected, Is.EqualTo(total));
@@ -74,6 +79,9 @@ namespace AirlineReservation.Tests
             int numberOfEconomyTickets = 0;
             int numberOfEconomyPlusTickets = 0;
             int numberOfBusinessTickets = 2;
+            FlightInformation flightinformation = new FlightInformation();
+            flightinformation.user = user;
+            flightinformation.flight = flight;
 
 
             // action
@@ -90,7 +98,7 @@ namespace AirlineReservation.Tests
         public void CalculateTotalWhenUserBuyTwoBusinessTicketsAndTwoEconomy_ShouldNotBook_ResultIsNegetive()
         {
 
-       
+
 
 
             // prepare
@@ -98,6 +106,9 @@ namespace AirlineReservation.Tests
             int numberOfEconomyTickets = 2;
             int numberOfEconomyPlusTickets = 0;
             int numberOfBusinessTickets = 2;
+            FlightInformation flightinformation = new FlightInformation();
+            flightinformation.user = user;
+            flightinformation.flight = flight;
 
 
             // action

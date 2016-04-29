@@ -106,5 +106,12 @@ namespace AirlineReservationSystem
             LoadFLightCrew();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FlightCrew fc = getSelectedCrew();
+            UpdateCrew uc = new UpdateCrew(fc);
+            this.Close();
+            uc.Show();
+        }
     }
 }

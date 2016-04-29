@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AirlineRegistration.Dao
 {
-    public class CarrierDAL: AbstractDAL
+    public class CarrierDAL : AbstractDAL
     {
 
         public Carrier getCarrierFromID(string carrierid)
@@ -22,14 +22,14 @@ namespace AirlineRegistration.Dao
                 WHERE  carrierId =@carrierId";
 
             cmdOne.Parameters.AddWithValue("@carrierId", carrierid);
-       
+
 
             using (var reader = cmdOne.ExecuteReader())
             {
                 if (reader.Read())
                 {
                     Console.WriteLine("carrierId: {0} carrierName: {1} carrierLocation: {2}", reader.GetString(0), reader.GetString(1), reader.GetString(2));
-                    carrier.carrierId= "Carrier Id:\t" + reader.GetString(0);
+                    carrier.carrierId = "Carrier Id:\t" + reader.GetString(0);
                     carrier.carrierName = "Carrier Name \t" + reader.GetString(1);
                     carrier.carrierLocation = "Carrier Location" + reader.GetString(2);
                 }
@@ -49,7 +49,7 @@ namespace AirlineRegistration.Dao
             cmdOne.Parameters.AddWithValue("@carrierId", c.carrierId);
             cmdOne.Parameters.AddWithValue("@carriername", c.carrierName);
             cmdOne.Parameters.AddWithValue("@carrierLocation", c.carrierLocation);
-         
+
 
 
             var result = cmdOne.ExecuteNonQuery();
@@ -83,14 +83,11 @@ namespace AirlineRegistration.Dao
             cmd.Parameters.AddWithValue("@carrierId", carrier.carrierId);
             cmd.Parameters.AddWithValue("@carrierName", carrier.carrierName);
             cmd.Parameters.AddWithValue("@carrierLocation", carrier.carrierLocation);
-            int result=0;
-            try
-            {
-                 result = cmd.ExecuteNonQuery();
-            }
-            catch (Exception e) {
-              //  logger.Error(e);
-            }
+            int result = 0;
+
+            result = cmd.ExecuteNonQuery();
+
+
 
             return result;
         }

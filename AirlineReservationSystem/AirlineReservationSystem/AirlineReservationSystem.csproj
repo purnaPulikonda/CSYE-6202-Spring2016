@@ -145,6 +145,12 @@
     <Compile Include="UpdateCarrier.Designer.cs">
       <DependentUpon>UpdateCarrier.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateCrew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateCrew.Designer.cs">
+      <DependentUpon>UpdateCrew.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateFlight.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateCarrier.resx">
       <DependentUpon>UpdateCarrier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateCrew.resx">
+      <DependentUpon>UpdateCrew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateFlight.resx">
       <DependentUpon>UpdateFlight.cs</DependentUpon>

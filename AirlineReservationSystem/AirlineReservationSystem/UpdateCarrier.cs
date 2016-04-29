@@ -41,11 +41,17 @@ namespace AirlineReservationSystem
         private void btnReset_Click(object sender, EventArgs e)
         {
             int result = 0;
+
+            Carrier updatedCarrier = new Carrier();
+            updatedCarrier.carrierId = c.carrierId;
+            updatedCarrier.carrierName = c.carrierName;
+            updatedCarrier.carrierLocation = c.carrierLocation;
+
             CarrierDAL cdal = new CarrierDAL();
             try
             {
                 cdal.openConnection();
-               result= cdal.updateCArrier(c);
+               result= cdal.updateCArrier(updatedCarrier);
                 cdal.closeConnection();
             }
             catch (SqlException ex) {

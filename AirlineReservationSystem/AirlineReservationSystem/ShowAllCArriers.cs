@@ -103,12 +103,11 @@ namespace AirlineReservationSystem
 
         private void button3_Click(object sender, EventArgs e)
         {
+           
+            Carrier car = getSelectedCarrier();
+
+            UpdateCarrier uc = new UpdateCarrier(car);
             this.Close();
-            Carrier c = new Carrier();
-              c=  getSelectedCarrier();
-            Console.WriteLine(c);
-          
-            UpdateCarrier uc = new UpdateCarrier(c);
             uc.Show();
         }
     }

@@ -75,6 +75,38 @@ namespace AirlineRegistration.Dao
             var reader = cmdOne.ExecuteNonQuery();
             return reader;
         }
+
+        public int updateCrew(string text, List<Employee> listOfEmployee)
+        {
+
+            foreach (Employee e in listOfEmployee)
+            {
+                var cmd = getConnection().CreateCommand();
+                cmd.CommandText = @"
+                INSERT into crewEmployee (crewid, empid)
+                VALUES (@crewid, @empid)";
+
+                cmd.Parameters.AddWithValue("@crewid", text);
+                cmd.Parameters.AddWithValue("@empid", e.empId);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            foreach (Employee e in listOfEmployee)
+            {
+                var cmdOne = getConnection().CreateCommand();
+                cmdOne.CommandText = @"
+                UPDATE Employee
+                SET crewid=@crewid
+                WHERE empid=@empid";
+
+                cmdOne.Parameters.AddWithValue("@crewid", text);
+                cmdOne.Parameters.AddWithValue("@empid", e.empId);
+
+                cmdOne.ExecuteNonQuery();
+            }
+            return 0;
+        }
     }
 
 }
